@@ -1,0 +1,31 @@
+[project]
+name = "ai_pops"
+version = "0.1.0"
+description = "ai-pops using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai>=0.152.0,<1.0.0",  # Removed [tools] to avoid chromadb
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "openai>=1.12.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.5.0",
+    "python-multipart>=0.0.6",
+    "requests>=2.31.0"  # For web requests
+]
+
+[project.scripts]
+ai_pops = "ai_pops.main:run"
+run_crew = "ai_pops.main:run"
+train = "ai_pops.main:train"
+replay = "ai_pops.main:replay"
+test = "ai_pops.main:test"
+start_api = "ai_pops.api.server:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
